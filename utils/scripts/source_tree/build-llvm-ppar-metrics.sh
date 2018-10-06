@@ -9,15 +9,14 @@ BMK_CONFIG_FILE="${SRC_DIR}/configs/all_except_fortran.txt"
 PIPELINE_CONFIG_FILE="${SRC_DIR}/configs/pipelines/ppar_metrics.txt"
 
 LINKER_FLAGS="-Wl,-L$(llvm-config --libdir) -Wl,-rpath=$(llvm-config --libdir)"
-LINKER_FLAGS="${LINKER_FLAGS} -lc++ -lc++abi"
+#LINKER_FLAGS="${LINKER_FLAGS} -lc++ -lc++abi"
 
 CC=clang CXX=clang++ \
   cmake \
-  -GNinja \
+  -G "Unix Makefiles" \
   -DCMAKE_POLICY_DEFAULT_CMP0056=NEW \
   -DCMAKE_EXPORT_COMPILE_COMMANDS=On \
   -DCMAKE_BUILD_TYPE=Debug \
-  -DCMAKE_CXX_FLAGS="-stdlib=libc++" \
   -DCMAKE_EXE_LINKER_FLAGS="${LINKER_FLAGS}" \
   -DCMAKE_SHARED_LINKER_FLAGS="${LINKER_FLAGS}" \
   -DCMAKE_MODULE_LINKER_FLAGS="${LINKER_FLAGS}" \
