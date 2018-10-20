@@ -34,7 +34,7 @@ CXX_FLAGS="${CMAKE_CXX_FLAGS} ${ICC_FLAGS}"
 
 CC=icc CXX=icpc \
   cmake \
-  -G "Unix Makefiles"
+  -G "Unix Makefiles" \
   -DCMAKE_POLICY_DEFAULT_CMP0056=NEW \
   -DCMAKE_EXPORT_COMPILE_COMMANDS=On \
   -DCMAKE_BUILD_TYPE=Debug \
